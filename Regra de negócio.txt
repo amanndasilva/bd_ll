@@ -1,0 +1,3 @@
+Regra de negócios: Clientes devem se cadastrar no site de uma livraria, realizar seus pedidos por telefone. A partir do pedido, uma nota de serviço é gerada e o boleto de pagamento é emitido apenas após a emissão da NF.
+
+Requisitos funcionais: tabelas cliente, livro e pedido, são essenciais para o funcionamento do sistema.
