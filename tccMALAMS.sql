@@ -41,21 +41,14 @@ idAgendamento int auto_increment not null,
 idCliente int not null,
 idFuncionario int not null,
 idServico int not null,
-data date not null,
+dataAgendamento date not null,
 hora time not null,
-status varchar(20) not null,
+statusAgendamento varchar(20) not null,
+confirmacao enum('sim', 'nao') not null,
 primary key (idAgendamento),
 foreign key (idCliente) references clientes(idCliente),
 foreign key (idFuncionario) references funcionarios(idFuncionario),
 foreign key (idServico) references servicos(idServico)
-);
-
-create table confirmacao(
-idConfirmacao int auto_increment not null,
-idCliente int not null,
-confirmacao ENUM('sim', 'nao') not null,
-primary key (idConfirmacao),
-foreign key (idCliente) references clientes(idCliente)
 );
 
 create table desconto(
@@ -100,18 +93,12 @@ insert into funcionarios(idServico, nomeFuncionario, emailFuncionario, senhaFunc
 (3, 'Tiago Alves', 'tiago@gmail.com', 'senhaTiago', '99999-0106', '678.901.234-56'),
 (1, 'Aline Costa', 'aline@gmail.com', 'senhaAline', '99999-0107', '789.012.345-67');
 
-insert into agendamentos(idCliente, idFuncionario, idServico, data, hora, status) values
-(1, 2, 1, '2024-10-25', '10:00:00', 'agendado'),
-(2, 1, 4, '2024-10-26', '14:30:00', 'agendado'),
-(3, 3, 5, '2024-10-27', '09:15:00', 'agendado'),
-(4, 4, 8, '2024-10-28', '16:00:00', 'agendado'),
-(5, 5, 7, '2024-10-29', '13:45:00', 'agendado');
-
-insert into confirmacao(idCliente, confirmacao) values
-(1, 'sim'),
-(2, 'nao'),
-(3, 'sim'),
-(4, 'nao');
+insert into agendamentos(idCliente, idFuncionario, idServico, dataAgendamento, hora, statusAgendamento, confirmacao) values
+(1, 2, 1, '2024-10-25', '10:00:00', 'agendado', 'sim'),
+(2, 1, 4, '2024-10-26', '14:30:00', 'agendado', 'sim'),
+(3, 3, 5, '2024-10-27', '09:15:00', 'agendado', 'sim'),
+(4, 4, 8, '2024-10-28', '16:00:00', 'agendado', 'nao'),
+(5, 5, 7, '2024-10-29', '13:45:00', 'agendado', 'nao');
 
 insert into desconto(idCliente, frequencia, valorDesconto) values
 (1, 100.00, 20.00),
